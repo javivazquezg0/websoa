@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier Guerrero | Coach Personal & Desarrollo Personal</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e67e22;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('/api/placeholder/1200/500') center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h4 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            height: 200px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-content h4 {
+            font-size: a.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .testimonials .section-title h3 {
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .author-info h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info span {
+            color: var(--accent-color);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h4 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img {
+                margin-bottom: 30px;
+            }
+
+            .hero h2 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Javier <span>Guerrero</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Transforma Tu Vida Con Coaching Personal</h2>
+                <p>Descubre tu potencial, supera tus límites y alcanza el éxito que siempre has soñado con la guía personalizada de Javier Guerrero.</p>
+                <a href="#contacto" class="btn">Agenda Tu Consulta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="sobre-mi">
+        <div class="container">
+            <div class="section-title">
+                <h3>Sobre Mí</h3>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="/img/tony.jpg" alt="Javier Guerrero - Coach Personal">
+                </div>
+                <div class="about-text">
+                    <h4>Javier Guerrero</h4>
+                    <p>Con más de 10 años de experiencia en coaching personal y desarrollo humano, me he dedicado a ayudar a cientos de personas a transformar sus vidas, superar obstáculos y alcanzar sus metas más ambiciosas.</p>
+                    <p>Mi filosofía se basa en el potencial ilimitado que cada persona posee. A través de mi metodología única, te acompaño en un viaje de autodescubrimiento, crecimiento personal y logro de objetivos.</p>
+                    <p>Certificado en programación neurolingüística, inteligencia emocional y coaching ontológico, combino diferentes técnicas para crear un enfoque personalizado que se adapta perfectamente a tus necesidades específicas.</p>
+                    <a href="#" class="btn">Conoce Mi Historia</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h3>Mis Servicios</h3>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/300/200" alt="Coaching Individual">
+                    </div>
+                    <div class="service-content">
+                        <h4>Coaching Individual</h4>
+                        <p>Sesiones personalizadas enfocadas en tus objetivos específicos, obstáculos y plan de acción para transformar tu vida.</p>
+                        <a href="#" class="btn">Saber Más</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/300/200" alt="Talleres Grupales">
+                    </div>
+                    <div class="service-content">
+                        <h4>Talleres Grupales</h4>
+                        <p>Experiencias transformadoras en grupo donde aprenderás técnicas prácticas para el desarrollo personal y profesional.</p>
+                        <a href="#" class="btn">Saber Más</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/300/200" alt="Conferencias Motivacionales">
+                    </div>
+                    <div class="service-content">
+                        <h4>Conferencias Motivacionales</h4>
+                        <p>Charlas inspiradoras para empresas y organizaciones que buscan potenciar el rendimiento y bienestar de sus equipos.</p>
+                        <a href="#" class="btn">Saber Más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h3>Videos Destacados</h3>
+            </div>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <!-- Aquí se puede incrustar el video de YouTube -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/g7BQOTgBpHg?si=sDX1qhGkdAh1ETn1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h3>Lo Que Dicen Mis Clientes</h3>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Trabajar con Javier transformó mi vida profesional por completo. Sus técnicas me ayudaron a superar el miedo al fracaso y ahora dirijo mi propia empresa con confianza."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="Cliente">
+                        <div class="author-info">
+                            <h5>María Rodríguez</h5>
+                            <span>Emprendedora</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"El programa de coaching de Javier me ayudó a encontrar un equilibrio entre mi vida personal y profesional que nunca pensé posible. Ahora disfruto cada día con propósito y claridad."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="Cliente">
+                        <div class="author-info">
+                            <h5>Carlos López</h5>
+                            <span>Ejecutivo Senior</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Después de años luchando con la ansiedad, las técnicas que aprendí con Javier me dieron las herramientas para manejarla y convertir mi pasión en mi profesión."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="Cliente">
+                        <div class="author-info">
+                            <h5>Laura Martínez</h5>
+                            <span>Artista</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h3>Contacto</h3>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h4>¿Listo para transformar tu vida?</h4>
+                    <p>Agenda una consulta gratuita de 30 minutos donde evaluaremos tu situación actual y diseñaremos un plan personalizado para ayudarte a alcanzar tus objetivos.</p>
+                    <div class="contact-info-item">
+                        <i>📧</i>
+                        <p>info@javierguerrero.com</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>📱</i>
+                        <p>+34 600 123 456</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i>📍</i>
+                        <p>Calle Principal 123, Madrid, España</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#">
+                        <input type="text" placeholder="Nombre" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="Teléfono">
+                        <textarea placeholder="¿En qué puedo ayudarte?"></textarea>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Javier Guerrero</h4>
+                    <p>Transformando vidas a través del coaching personal y el desarrollo humano. Juntos podemos descubrir tu potencial ilimitado.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#sobre-mi">Sobre Mí</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Horario</h4>
+                    <p>Lunes a Viernes: 9:00 - 20:00</p>
+                    <p>Sábados: 10:00 - 14:00</p>
+                    <p>Domingos: Cerrado</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#"><span>FB</span></a>
+                <a href="#"><span>IG</span></a>
+                <a href="#"><span>TW</span></a>
+                <a href="#"><span>LI</span></a>
+                <a href="#"><span>YT</span></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Javier Guerrero | Coach Personal. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
